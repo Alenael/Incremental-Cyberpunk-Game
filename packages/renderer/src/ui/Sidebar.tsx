@@ -1,24 +1,27 @@
 import * as React from 'react';
 import type {Router} from '@remix-run/router';
-import {useMenus} from '../context/MenusContext';
+import {useMenus} from '../features/menus/ui/Context';
+import {useRender} from '../hooks/useRender';
 
 interface SidebarProps {
   router: Router;
 }
 
+/** Sidebar will hold all objects required to display the Sidebar UI */
 const Sidebar: React.FC<SidebarProps> = ({router}: SidebarProps) => {
-  const {menus, setMenu} = useMenus();
+  const menus = useMenus();
+  useRender();
 
   return (
     <div className="sidebar">
-      {menus
-        .filter(m => m.visible)
+      {menus.menus
+        .filter(m => m.isVisible())
         .map(button => (
           <button
             key={button.id}
             onClick={() => {
               router.navigate(button.path);
-              setMenu(button.id);
+              menus.setMenu(button.id);
             }}
           >
             {button.name}
