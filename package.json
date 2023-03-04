@@ -2,6 +2,7 @@
   "name": "react-electron-vite-boilerplate",
   "description": "Playin around with Javascript",
   "private": true,
+  "version": "1",
   "author": {
     "email": "witol.justin@hotmail.com",
     "name": "Justin Witol"
