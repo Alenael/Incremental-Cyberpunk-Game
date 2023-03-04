@@ -30,7 +30,7 @@ jobs:
 
       - name: Get last git tag
         id: tag
-        run: echo "name=last-tag::$(git describe --tags --abbrev=0 || git rev-list --max-parents=0 ${{github.ref}})" >> $GITHUB_OUTPUT
+        run: echo "last-tag=$(git describe --tags --abbrev=0 || git rev-list --max-parents=0 ${{github.ref}})" >> $GITHUB_OUTPUT
 
       - name: Generate release notes
         uses: ./.github/actions/release-notes
@@ -43,7 +43,7 @@ jobs:
 
       - name: Get version from current date
         id: version
-        run: echo "name=build-version::$(node -e "try{console.log(require('./.electron-builder.config.js').extraMetadata.version)}catch(e){console.error(e);process.exit(1)}")" >> $GITHUB_OUTPUT
+        run: echo "build-version=$(node -e "try{console.log(require('./.electron-builder.config.js').extraMetadata.version)}catch(e){console.error(e);process.exit(1)}")" >> $GITHUB_OUTPUT
 
       - name: Delete outdated drafts
         uses: hugo19941994/delete-draft-releases@v1.0.0
