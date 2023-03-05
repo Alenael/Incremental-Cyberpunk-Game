@@ -1,5 +1,7 @@
 on:
-  - push
+  push:
+    branches-ignore:
+      - "v*.*.*-*"
 
 concurrency:
   group: format-${{ github.ref }}
