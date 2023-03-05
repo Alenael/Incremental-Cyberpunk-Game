@@ -51,12 +51,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release Draft
-        uses: softprops/action-gh-release@v1
+        id: create_release
+        uses: softprops/action-gh-release@v1        
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
         with:
           prerelease: false
-          draft: false
+          draft: true
           tag_name: v${{ steps.version.outputs.build-version }}
           name: v${{ steps.version.outputs.build-version }}
           body: ${{ steps.release-note.outputs.release-note }}
@@ -126,3 +127,14 @@ jobs:
 
           # Password for decrypting `mac_certs`
           # mac_certs_password: ''
+
+  publish_release:
+    needs: [ upload_artifacts ]
+
+    steps:
+      - name: Publish Release to Github
+        uses: eregon/publish-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ steps.create_release.outputs.id }}
