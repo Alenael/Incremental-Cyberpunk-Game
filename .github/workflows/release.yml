@@ -127,3 +127,14 @@ jobs:
 
           # Password for decrypting `mac_certs`
           # mac_certs_password: ''
+
+    publish_release:
+      needs: [ upload_artifacts ]
+      runs-on: [ ubuntu-latest ]
+      steps:
+        - name: Publish Release to Github
+          uses: eregon/publish-release@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            release_id: ${{ steps.create_release.outputs.id }}

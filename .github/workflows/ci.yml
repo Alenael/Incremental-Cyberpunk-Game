@@ -33,14 +33,4 @@ jobs:
     if: github.event_name == 'push' && github.ref_name == 'main'
     needs: [ typechecking, tests ]
     uses: ./.github/workflows/release.yml
-  publish_release:
-    needs: [ draft_release ]    
-    runs-on: [ windows-latest ]
-    steps:
-      - name: Publish Release to Github
-        uses: eregon/publish-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          release_id: ${{ steps.create_release.outputs.id }}
 
