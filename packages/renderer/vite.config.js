@@ -18,7 +18,7 @@ const config = {
       '/@/': join(PACKAGE_ROOT, 'src') + '/',
     },
   },
-  base: '',
+  base: '/',
   server: {
     fs: {
       strict: true,
