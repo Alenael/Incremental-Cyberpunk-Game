@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from '../../ui/Pages/Home';
 import UnlockedMenu from '../../ui/Pages/Unlocked';
-import DevMenu from '../../ui/Pages/Dev';
+import DevMenu from '../../dev/ui/DevMenu';
 import ErrorMenu from '../../ui/Pages/Error';
 import {Player} from '../Player';
 

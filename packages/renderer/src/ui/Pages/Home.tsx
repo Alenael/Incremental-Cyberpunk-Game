@@ -1,3 +1,4 @@
+import {Button} from '@chakra-ui/react';
 import * as React from 'react';
 import {useState} from 'react';
 import {Player} from '/@/features/Player';
@@ -18,7 +19,12 @@ const Home: React.FC = () => {
       <header className="app-header">
         <p>Vite + React + TypeScript</p>
         <p>
-          <button onClick={() => addCount()}>Count: {count}</button>
+          <Button
+            bg="oxford.50"
+            onClick={() => addCount()}
+          >
+            Count: {count}
+          </Button>
         </p>
       </header>
     </div>

@@ -2,6 +2,7 @@ import * as React from 'react';
 import type {Router} from '@remix-run/router';
 import {useMenus} from '../features/menus/ui/Context';
 import {useRender} from '../hooks/useRender';
+import {Button} from '@chakra-ui/react';
 
 interface SidebarProps {
   router: Router;
@@ -17,7 +18,7 @@ const Sidebar: React.FC<SidebarProps> = ({router}: SidebarProps) => {
       {menus.menus
         .filter(m => m.isVisible())
         .map(button => (
-          <button
+          <Button
             key={button.id}
             onClick={() => {
               router.navigate(button.path);
@@ -25,7 +26,7 @@ const Sidebar: React.FC<SidebarProps> = ({router}: SidebarProps) => {
             }}
           >
             {button.name}
-          </button>
+          </Button>
         ))}
     </div>
   );

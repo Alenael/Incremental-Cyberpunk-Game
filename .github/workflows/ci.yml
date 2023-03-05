@@ -10,6 +10,9 @@ on:
       - .editorconfig
       - .gitignore
   pull_request:
+    branches:
+      - main
+      - master
     paths-ignore:
       - '**.md'
       - .editorconfig
