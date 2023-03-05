@@ -98,7 +98,7 @@ jobs:
           VITE_APP_VERSION: ${{ needs.draft.outputs.version }}
         with:
           build_script_name: build
-          args: --config .electron-builder.config.js
+          args: --config .electron-builder.config.js --publish always
 
           # GitHub token, automatically provided to the action
           # (No need to define this secret in the repo settings)
