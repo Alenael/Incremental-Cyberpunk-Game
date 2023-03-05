@@ -55,8 +55,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
         with:
-          prerelease: true
-          draft: true
+          prerelease: false
+          draft: false
           tag_name: v${{ steps.version.outputs.build-version }}
           name: v${{ steps.version.outputs.build-version }}
           body: ${{ steps.release-note.outputs.release-note }}
@@ -98,7 +98,7 @@ jobs:
           VITE_APP_VERSION: ${{ needs.draft.outputs.version }}
         with:
           build_script_name: build
-          args: --config .electron-builder.config.js --publish always
+          args: --config .electron-builder.config.js
 
           # GitHub token, automatically provided to the action
           # (No need to define this secret in the repo settings)
