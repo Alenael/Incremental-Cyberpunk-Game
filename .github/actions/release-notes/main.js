@@ -338,7 +338,7 @@ try {
   const commits = getCommits();
   const grouped = getGroupedCommits(commits);
   const changelog = getChangeLog(grouped);
-  process.stdout.write('::set-output name=release-note::' + escapeData(changelog) + '\r\n');
+  process.stdout.write('release-note=' + escapeData(changelog) + ' >> $GITHUB_OUTPUT\r\n');
 // require('fs').writeFileSync('../CHANGELOG.md', changelog, {encoding: 'utf-8'})
 } catch (e) {
   console.error(e);

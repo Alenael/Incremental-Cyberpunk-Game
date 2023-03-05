@@ -134,7 +134,7 @@ jobs:
     runs-on: [ ubuntu-latest ]
     steps:
       - name: Publish Release to Github
-        uses: eregon/publish-release@v1
+        uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
         with:
