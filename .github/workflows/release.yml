@@ -18,6 +18,7 @@ jobs:
     outputs:
       release-note: ${{ steps.release-note.outputs.release-note }}
       version: ${{ steps.version.outputs.build-version }}
+      release-id: ${{ steps.create_release.outputs.id }}
 
     steps:
       - uses: actions/checkout@v3
@@ -26,7 +27,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 18
 
       - name: Get last git tag
         id: tag
@@ -78,7 +79,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'yarn'
 
       - run: yarn install --frozen-lockfile
@@ -135,6 +136,6 @@ jobs:
       - name: Publish Release to Github
         uses: eregon/publish-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.github_token }}
         with:
-          release_id: ${{ steps.create_release.outputs.id }}
+          release_id: ${{ steps.create_release.outputs.release-id }}
