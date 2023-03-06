@@ -18,7 +18,6 @@ jobs:
     outputs:
       release-note: ${{ steps.release-note.outputs.release-note }}
       version: ${{ steps.version.outputs.build-version }}
-      release-id: ${{ steps.create_release.outputs.id }}
 
     steps:
       - uses: actions/checkout@v3
@@ -52,7 +51,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release Draft
-        id: create_release
         uses: softprops/action-gh-release@v1        
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
