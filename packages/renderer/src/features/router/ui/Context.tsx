@@ -1,11 +1,10 @@
-import type Menu from '../MenusMetadata';
-import {MenusMetadata} from '../MenusMetadata';
+import type Menu from '../RouterMetadata';
 import React, {useContext} from 'react';
-import {useRender} from '/@/hooks/useRender';
+import {RouterMetadata} from '../RouterMetadata';
 
 /** Holds our Menu Metadata and any logic tied up in the menu system */
 export class MenuData {
-  menus: Menu[] = MenusMetadata;
+  menus: Menu[] = RouterMetadata;
   selectedMenu = '';
 
   setMenu(id: string): void {
@@ -17,8 +16,6 @@ export const Menus = new MenuData();
 export const Context = React.createContext<MenuData>({} as MenuData);
 
 export const MenusProvider = ({children}: any) => {
-  useRender();
-
   return <Context.Provider value={Menus}>{children}</Context.Provider>;
 };
 

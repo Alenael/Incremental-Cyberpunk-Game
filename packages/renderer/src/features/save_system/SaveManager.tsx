@@ -1,4 +1,4 @@
-import {Player} from '../Player';
+import {Player} from '/@/player';
 import {save} from './db';
 import type {IReviverValue} from '/@/utils/JSONReviver';
 import {Generic_fromJSON, Generic_toJSON} from '/@/utils/JSONReviver';

@@ -1,4 +1,4 @@
-import {Player, loadPlayer} from '../Player';
+import {Player, loadPlayer} from '../player/Player';
 import {CONSTANTS} from '/@/Constants';
 
 /** Defines the global state of data used for Saving and Loading */

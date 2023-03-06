@@ -15,6 +15,7 @@ const config = {
   root: PACKAGE_ROOT,
   resolve: {
     alias: {
+      '/@/player': join(PACKAGE_ROOT, 'src', 'features', 'player', 'Player'),
       '/@/': join(PACKAGE_ROOT, 'src') + '/',
     },
   },

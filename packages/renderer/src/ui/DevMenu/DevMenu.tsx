@@ -1,6 +1,6 @@
 import {Button} from '@chakra-ui/react';
 import * as React from 'react';
-import {saveObject} from '../../features/save_system/SaveManager';
+import {saveObject} from '/@/features/save_system/SaveManager';
 import {deleteGame, load} from '/@/features/save_system/db';
 import {useRender} from '/@/hooks/useRender';
 

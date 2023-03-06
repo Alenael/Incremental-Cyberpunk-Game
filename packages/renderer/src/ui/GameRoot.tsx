@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {RouterProvider, createMemoryRouter} from 'react-router-dom';
 import {ToastContainer, Flip} from 'react-toastify';
-import {MenusMetadata} from '../features/menus/MenusMetadata';
 import Sidebar from '/@/ui/Sidebar';
 import 'react-toastify/dist/ReactToastify.min.css';
-import {MenusProvider} from '../features/menus/ui/Context';
+import {MenusProvider} from '/@/features/router/ui/Context';
+import {RouterMetadata} from '/@/features/router/RouterMetadata';
 
 /** Game Root will hold all objects required to display the Game UI */
 const GameRoot: React.FC = () => {
-  const router = createMemoryRouter(MenusMetadata);
+  const router = createMemoryRouter(RouterMetadata);
 
   return (
     <MenusProvider>

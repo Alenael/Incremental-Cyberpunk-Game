@@ -1,6 +1,6 @@
-import type {IReviverValue} from '../utils/JSONReviver';
-import {Reviver} from '../utils/JSONReviver';
-import {Generic_fromJSON, Generic_toJSON} from '../utils/JSONReviver';
+import type {IReviverValue} from '../../utils/JSONReviver';
+import {Reviver} from '../../utils/JSONReviver';
+import {Generic_fromJSON, Generic_toJSON} from '../../utils/JSONReviver';
 
 export class PlayerObject {
   unlocked = false;

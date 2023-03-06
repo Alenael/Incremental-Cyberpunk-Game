@@ -1,9 +1,9 @@
 import React from 'react';
-import Home from '../../ui/Pages/Home';
-import UnlockedMenu from '../../ui/Pages/Unlocked';
-import DevMenu from '../../dev/ui/DevMenu';
-import ErrorMenu from '../../ui/Pages/Error';
-import {Player} from '../Player';
+import Home from '/@/ui/Pages/Home';
+import UnlockedMenu from '/@/ui/Pages/Unlocked';
+import DevMenu from '/@/ui/DevMenu/DevMenu';
+import ErrorMenu from '/@/ui/Pages/Error';
+import {Player} from '/@/player';
 
 export default interface Menu {
   id: string;
@@ -14,7 +14,7 @@ export default interface Menu {
   isVisible(): boolean;
 }
 
-export const MenusMetadata: Menu[] = [
+export const RouterMetadata: Menu[] = [
   {
     id: '0',
     path: '/',

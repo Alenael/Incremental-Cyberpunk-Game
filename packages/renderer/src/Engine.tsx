@@ -1,6 +1,6 @@
 import {CONSTANTS} from './Constants';
-import {Player} from './features/Player';
-import {loadGame} from './features/save_system/SaveManager';
+import {Player} from '/@/player';
+import {loadGame} from '/@/features/save_system/SaveManager';
 
 /** Purpose of the class is to create and endless loop of calls to the main game loop each time a frame is rendered to browser*/
 export const Engine: {
