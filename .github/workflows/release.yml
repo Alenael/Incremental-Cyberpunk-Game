@@ -128,14 +128,3 @@ jobs:
 
           # Password for decrypting `mac_certs`
           # mac_certs_password: ''
-
-  publish_release:
-    needs: [ upload_artifacts ]
-    runs-on: [ ubuntu-latest ]
-    steps:
-      - name: Publish Release to Github
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
-        with:
-          release_id: ${{ steps.create_release.outputs.release-id }}
