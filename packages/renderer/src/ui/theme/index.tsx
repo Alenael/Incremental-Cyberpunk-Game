@@ -1,12 +1,11 @@
 import {extendTheme} from '@chakra-ui/react';
-import {ButtonStyle} from './components/Button';
-import {Colors} from './foundations/Colors';
-import {Styles} from './styles';
+import {Button} from './components/Button';
+import {colors} from './foundations/Colors';
+import {styles} from './styles';
 
 const overrides = {
-  Styles,
-  components: {ButtonStyle},
-  colors: Colors,
+  styles,
+  components: {Button},
+  colors,
 };
-
 export default extendTheme(overrides);

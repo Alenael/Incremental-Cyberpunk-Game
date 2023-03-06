@@ -1,37 +1,48 @@
 import {defineStyleConfig} from '@chakra-ui/react';
 
-export const ButtonStyle = defineStyleConfig({
+export const Button = defineStyleConfig({
   baseStyle: {
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    borderRadius: 'base',
+    borderRadius: 'none',
+    border: '2px solid',
   },
   sizes: {
     sm: {
-      fontSize: 'sm',
       px: 4,
-      py: 3,
+      h: '30px',
+      fontSize: '20px',
     },
     md: {
-      fontSize: 'md',
       px: 6,
-      py: 4,
+      h: '50px',
+      fontSize: '25px',
+    },
+    lg: {
+      px: 8,
+      h: '70px',
+      fontSize: '30px',
     },
   },
   variants: {
-    outline: {
-      border: '2px solid',
-      borderColor: 'purple.500',
-      color: 'purple.500',
+    primary: {
+      borderColor: 'smoke.500',
+      color: 'sienna.300',
+      bg: 'smoke.600',
+      _hover: {
+        bg: 'smoke.500',
+      },
     },
-    solid: {
-      bg: 'purple.500',
-      color: 'white',
+    secondary: {
+      border: '2px solid',
+      borderColor: 'smoke.500',
+      bg: 'smoke.100',
+      color: 'smoke.600',
+      _hover: {
+        bg: 'smoke.300',
+      },
     },
   },
-  // The default size and variant values
   defaultProps: {
     size: 'sm',
-    variant: 'outline',
+    variant: 'primary',
   },
 });

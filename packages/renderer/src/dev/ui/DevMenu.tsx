@@ -10,9 +10,25 @@ const DevMenu: React.FC = () => {
   return (
     <div>
       {JSON.stringify(saveObject)}
-      <Button onClick={() => saveObject.saveGame()}>Save Game</Button>
-      <Button onClick={() => load()}>Load Game</Button>
-      <Button onClick={() => deleteGame()}>Delete Game</Button>
+      <Button
+        onClick={() => saveObject.saveGame()}
+        variant="primary"
+      >
+        Save Game
+      </Button>
+      <Button
+        onClick={() => load()}
+        variant="secondary"
+        size="md"
+      >
+        Load Game
+      </Button>
+      <Button
+        onClick={() => deleteGame()}
+        size="lg"
+      >
+        Delete Game
+      </Button>
     </div>
   );
 };
