@@ -1,6 +1,6 @@
 # Incremental Cyberpunk Game
 
-The idea is an incremental game where you make money, become stronger, and explore a futuristic cyberpunk world. You interface with the world via a terminal and can explore the world, find many activities to enjoy, and collect the 12 ancient artifacts.
+The idea is an incremental game where you make money, become stronger, and explore a futuristic cyberpunk world. You interface with the world via a terminal and can explore the world.
 
 # Work In Progress
 
