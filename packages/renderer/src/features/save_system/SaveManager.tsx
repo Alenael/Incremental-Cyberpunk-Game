@@ -5,11 +5,11 @@ import {Generic_fromJSON, Generic_toJSON} from '/@/utils/JSONReviver';
 import {Reviver} from '/@/utils/JSONReviver';
 import {Buffer} from 'buffer';
 import {GlobalState} from './GlobalState';
-import {toast} from 'react-toastify';
+import {toast} from '/@/ui/theme/components/Toast';
 
 /** Handles Saving and Loading the Game State to the DB and hanldes executing Migrations */
 class GameSaveObject extends GlobalState {
-  saveSuccess = () => toast('Save Succesfull!');
+  saveSuccess = () => toast({title: 'Save Succesfull!'});
 
   getSaveString(): string {
     this.saveState();
