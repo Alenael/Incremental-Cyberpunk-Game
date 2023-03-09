@@ -1,32 +1,23 @@
-import {Button, HStack} from '@chakra-ui/react';
-import React, {useState, lazy} from 'react';
+import {Box, Button, VStack} from '@chakra-ui/react';
+import React, {useState} from 'react';
 
 import {Loading} from './Loading';
-const NewGame = lazy(() => import('./NewGame'));
+import {deleteGame} from '/@/features/save/db';
 
 export function Start(): React.ReactElement {
   const [loaded, setLoaded] = useState(false);
-  const [showNewGame, setShowNewGame] = useState(false);
 
   return loaded ? (
     <Loading />
   ) : (
-    <div>
-      {showNewGame ? (
-        <NewGame
-          setLoaded={setLoaded}
-          setShowNewGame={setShowNewGame}
-        />
-      ) : (
-        <div>
-          Start
-          <br />
-          <HStack spacing="24px">
-            <Button onClick={() => setShowNewGame(true)}>New Game</Button>
-            <Button onClick={() => setLoaded(true)}>Continue - Profile Name</Button>
-          </HStack>
-        </div>
-      )}
-    </div>
+    <Box>
+      Start
+      <VStack>
+        <Button onClick={() => setLoaded(true)}>Start Game</Button>
+        <Button>Export Save</Button>
+        <Button>Import Save</Button>
+        <Button onClick={deleteGame}>Delete Save</Button>
+      </VStack>
+    </Box>
   );
 }
