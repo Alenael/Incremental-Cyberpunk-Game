@@ -29,4 +29,4 @@ export class Train extends Task {
   }
 }
 
-Reviver.constructors.Work = Train;
+Reviver.constructors.Train = Train;

@@ -1,4 +1,4 @@
-import {Button} from '@chakra-ui/react';
+import {Box, Button} from '@chakra-ui/react';
 import * as React from 'react';
 import {useState} from 'react';
 import {Player} from '/@/features/player/Player';
@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div className="app">
+    <Box className="app">
       <header className="app-header">
         <p>Vite + React + TypeScript</p>
         <p>
@@ -27,7 +27,7 @@ const Home: React.FC = () => {
           </Button>
         </p>
       </header>
-    </div>
+    </Box>
   );
 };
 

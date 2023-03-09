@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type {Router} from '@remix-run/router';
 
-import {Button} from '@chakra-ui/react';
+import {Box, Button} from '@chakra-ui/react';
 
 import {useRender} from '/@/hooks/useRender';
 import {useMenus} from '../router/Context';
@@ -16,7 +16,7 @@ const Sidebar: React.FC<SidebarProps> = ({router}: SidebarProps) => {
   useRender();
 
   return (
-    <div className="sidebar">
+    <Box className="sidebar">
       {menus.menus
         .filter(m => m.isVisible())
         .map(button => (
@@ -30,7 +30,7 @@ const Sidebar: React.FC<SidebarProps> = ({router}: SidebarProps) => {
             {button.name}
           </Button>
         ))}
-    </div>
+    </Box>
   );
 };
 

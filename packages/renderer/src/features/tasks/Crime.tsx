@@ -29,4 +29,4 @@ export class Crime extends Task {
   }
 }
 
-Reviver.constructors.Work = Crime;
+Reviver.constructors.Crime = Crime;
