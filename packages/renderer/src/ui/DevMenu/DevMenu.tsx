@@ -1,8 +1,12 @@
-import {Button} from '@chakra-ui/react';
 import * as React from 'react';
-import {saveObject} from '/@/features/save_system/SaveManager';
-import {deleteGame, load} from '/@/features/save_system/db';
+
+import {Button} from '@chakra-ui/react';
+
+import {saveObject} from '../../features/save/SaveManager';
+import {deleteGame, load} from '../../features/save/db';
 import {useRender} from '/@/hooks/useRender';
+import {Player} from '/@/player';
+import {Work} from '../../features/tasks/Work';
 
 const DevMenu: React.FC = () => {
   useRender();
@@ -10,6 +14,7 @@ const DevMenu: React.FC = () => {
   return (
     <div>
       {JSON.stringify(saveObject)}
+      <br />
       <Button
         onClick={() => saveObject.saveGame()}
         variant="primary"
@@ -29,6 +34,8 @@ const DevMenu: React.FC = () => {
       >
         Delete Game
       </Button>
+      <Button onClick={() => Player.startTask(new Work())}>Start Task</Button>
+      <Button onClick={() => Player.finishTask(true)}>Stop Task</Button>
     </div>
   );
 };

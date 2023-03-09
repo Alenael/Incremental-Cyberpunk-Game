@@ -1,4 +1,4 @@
-import {CONSTANTS} from '../../Constants';
+import {CONSTANTS} from '/@/Constants';
 
 function getDB(): Promise<IDBObjectStore> {
   return new Promise((resolve, reject) => {

@@ -1,3 +1,4 @@
+/**CSS Styles which apply globally across the Game */
 export const styles = {
   global: {
     // styles for the `body`

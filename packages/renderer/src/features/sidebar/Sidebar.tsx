@@ -1,8 +1,10 @@
 import * as React from 'react';
 import type {Router} from '@remix-run/router';
-import {useRender} from '/@/hooks/useRender';
+
 import {Button} from '@chakra-ui/react';
-import {useMenus} from '/@/features/router/ui/Context';
+
+import {useRender} from '/@/hooks/useRender';
+import {useMenus} from '../router/Context';
 
 interface SidebarProps {
   router: Router;

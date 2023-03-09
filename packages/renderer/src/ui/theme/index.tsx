@@ -7,21 +7,11 @@ import {styles} from './styles';
 const overrides = {
   styles,
   components: {
-    Button,
     Alert,
-    // Alert: {
-    //   variants: {
-    //     solid: () => {
-    //       return {
-    //         container: {
-    //           bg: `sienna.500`,
-    //         },
-    //       };
-    //     },
-    //   },
-    // },
+    Button,
   },
   colors,
 };
 
+/** Creates an extended Chakra UI Theme */
 export default extendTheme(overrides);

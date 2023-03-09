@@ -1,7 +1,7 @@
 import {Button} from '@chakra-ui/react';
 import * as React from 'react';
 import {useState} from 'react';
-import {Player} from '/@/player';
+import {Player} from '/@/features/player/Player';
 
 const Home: React.FC = () => {
   const [count, setCount] = useState(0);

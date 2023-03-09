@@ -1,3 +1,4 @@
+/** Custom color used across the game */
 export const colors = {
   sienna: {
     50: '#ffe8e4',

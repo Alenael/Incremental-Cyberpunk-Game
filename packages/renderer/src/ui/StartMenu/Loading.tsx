@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {load} from '../db';
-import {Engine} from '../../../Engine';
-import GameRoot from '/@/ui/GameRoot';
+import {Spinner} from '@chakra-ui/react';
 
-export function LoadingScreen(): React.ReactElement {
+import {load} from '../../features/save/db';
+import {Engine} from '/@/Engine';
+import GameRoot from '/@/ui/GameMenu/GameRoot';
+
+export function Loading(): React.ReactElement {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -23,5 +25,12 @@ export function LoadingScreen(): React.ReactElement {
     loadData();
   }, []);
 
-  return loaded ? <GameRoot /> : <div>Loading</div>;
+  return loaded ? (
+    <GameRoot />
+  ) : (
+    <div>
+      Loading
+      <Spinner size="xl" />
+    </div>
+  );
 }

@@ -1,5 +1,6 @@
 import {defineStyleConfig} from '@chakra-ui/react';
 
+/** Overrides the default styling of Chakra Button */
 export const Button = defineStyleConfig({
   baseStyle: {
     borderRadius: 'none',

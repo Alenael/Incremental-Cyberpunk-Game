@@ -1,11 +1,15 @@
-import {Player} from '/@/player';
-import {save} from './db';
+import {Buffer} from 'buffer';
+
+import {toast} from '/@/ui/theme/components/Toast';
+
 import type {IReviverValue} from '/@/utils/JSONReviver';
 import {Generic_fromJSON, Generic_toJSON} from '/@/utils/JSONReviver';
 import {Reviver} from '/@/utils/JSONReviver';
-import {Buffer} from 'buffer';
+
+import {save} from './db';
 import {GlobalState} from './GlobalState';
-import {toast} from '/@/ui/theme/components/Toast';
+
+import {Player} from '/@/player';
 
 /** Handles Saving and Loading the Game State to the DB and hanldes executing Migrations */
 class GameSaveObject extends GlobalState {

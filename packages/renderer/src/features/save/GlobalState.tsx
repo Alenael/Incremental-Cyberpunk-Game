@@ -1,4 +1,4 @@
-import {Player, loadPlayer} from '../player/Player';
+import {Player, loadPlayer} from '/@/player';
 import {CONSTANTS} from '/@/Constants';
 
 /** Defines the global state of data used for Saving and Loading */
@@ -11,7 +11,7 @@ export class GlobalState {
     this.GameVersion = JSON.stringify(CONSTANTS.VERSION_NUMBER);
   }
 
-  loadState(saveObj: any) {
+  loadState(saveObj: GlobalState) {
     loadPlayer(saveObj.PlayerData);
   }
 }

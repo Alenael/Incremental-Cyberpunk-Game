@@ -1,6 +1,6 @@
-import {CONSTANTS} from './Constants';
-import {Player} from '/@/player';
-import {loadGame} from '/@/features/save_system/SaveManager';
+import {CONSTANTS} from '/@/Constants';
+import {Player} from '/@/features/player/Player';
+import {loadGame} from '/@/features/save/SaveManager';
 
 /** Purpose of the class is to create and endless loop of calls to the main game loop each time a frame is rendered to browser*/
 export const Engine: {
@@ -9,25 +9,26 @@ export const Engine: {
   load: (saveString?: string) => void;
   start: () => void;
 } = {
-  lastUpdate: new Date().getTime(),
+  lastUpdate: 0,
+
+  /** Handles updating state for all required modules */
   updateGame: (numCycles = 1) => {
-    const time = numCycles * CONSTANTS.CYCLE_TIME;
-    Player.totalPlayTime += time;
+    Player.update(numCycles);
   },
+
+  /** Hanldes Loading Save Data and starting Engine */
   load: (saveString = '') => {
     if (loadGame(saveString)) {
       Engine.lastUpdate = new Date().getTime();
-      const lastUpdate = Player.lastUpdate;
-      const timeOffline = Engine.lastUpdate - lastUpdate;
-      const numCyclesOffline = Math.floor(timeOffline / CONSTANTS.CYCLE_TIME);
-      const time = numCyclesOffline * CONSTANTS.CYCLE_TIME;
-      Player.totalPlayTime += time;
+      const timeOffline = Engine.lastUpdate - Player.lastUpdate;
+      const numCycles = Math.floor(timeOffline / CONSTANTS.CYCLE_TIME);
       Player.lastUpdate = Engine.lastUpdate;
-      Engine.start();
-    } else {
-      Engine.start();
+      Player.update(numCycles);
     }
+    Engine.start();
   },
+
+  /** Main Game Loop */
   start: () => {
     const thisUpdate = new Date().getTime();
     const diff = thisUpdate - Engine.lastUpdate;

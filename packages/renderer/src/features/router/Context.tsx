@@ -1,6 +1,6 @@
-import type Menu from '../RouterMetadata';
+import type Menu from './RouterMetadata';
 import React, {useContext} from 'react';
-import {RouterMetadata} from '../RouterMetadata';
+import {RouterMetadata} from './RouterMetadata';
 
 /** Holds our Menu Metadata and any logic tied up in the menu system */
 export class MenuData {
