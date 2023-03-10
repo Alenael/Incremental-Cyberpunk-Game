@@ -5,17 +5,17 @@ import Sidebar from '/@/features/sidebar/Sidebar';
 import {ToastContainer} from '/@/ui/theme/components/Toast';
 import {MenusProvider} from '/@/features/router/Context';
 import {RouterMetadata} from '/@/features/router/RouterMetadata';
-import {PlayerInfo} from './Components/PlayerPanel';
+import {Tracker} from './Components/Tracker';
+import {PlayerTracker} from './Components/PlayerTracker';
 
 /** Game Root will hold all objects required to display the Game UI */
 const GameRoot: React.FC = () => {
   const router = createMemoryRouter(RouterMetadata);
-
   return (
     <MenusProvider>
       <Sidebar router={router} />
       <RouterProvider router={router} />
-      <PlayerInfo />
+      <Tracker>{parentOpen => <PlayerTracker parentOpen={parentOpen} />}</Tracker>
       <ToastContainer />
     </MenusProvider>
   );
