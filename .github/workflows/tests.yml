@@ -16,7 +16,7 @@ jobs:
       matrix:
         os: [ windows-latest ]
         # os: [ windows-latest, ubuntu-latest, macos-latest ]
-        package: [ main, preload, renderer ]
+        # package: [ main, preload, renderer ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
