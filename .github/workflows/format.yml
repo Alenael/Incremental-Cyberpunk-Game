@@ -3,6 +3,7 @@ on:
   push:
     branches-ignore:
       - "v*.*.*-*"
+      - "main"
 
 concurrency:
   group: format-${{ github.ref }}
