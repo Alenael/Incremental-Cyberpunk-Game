@@ -34,7 +34,7 @@ export const RouterMetadata: Menu[] = [
     path: '/dev',
     element: <DevMenu />,
     errorElement: <ErrorMenu />,
-    isVisible: () => (import.meta.env.DEV ? true : false),
+    isVisible: () => true, //import.meta.env.DEV ? true : false),
     name: 'Dev',
   },
   {
