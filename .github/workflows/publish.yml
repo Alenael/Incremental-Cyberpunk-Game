@@ -37,7 +37,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          # Upload dist repository
           path: './packages/renderer/dist'
       - name: Deploy to GitHub Pages
         id: deployment
@@ -45,6 +44,6 @@ jobs:
       - name: Cleanup Releases
         uses: dev-drprasad/delete-older-releases@v0.2.0
         with:
-          keep_latest: 3
+          keep_latest: 1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

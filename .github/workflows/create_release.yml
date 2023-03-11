@@ -11,26 +11,21 @@ defaults:
     shell: 'bash'
 
 jobs:
-
   draft:
     runs-on: ubuntu-latest
     outputs:
       release-note: ${{ steps.release-note.outputs.release-note }}
       version: ${{ steps.version.outputs.build-version }}
-
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-
       - name: Get last git tag
         id: tag
         run: echo "last-tag=$(git describe --tags --abbrev=0 || git rev-list --max-parents=0 ${{github.ref}})" >> $GITHUB_OUTPUT
-
       - name: Generate release notes
         uses: ./.github/actions/release-notes
         id: release-note
@@ -39,16 +34,13 @@ jobs:
           to: ${{ github.ref }}
           include-commit-body: true
           include-abbreviated-commit: true
-
       - name: Get version from current date
         id: version
         run: echo "build-version=$(node -e "try{console.log(require('./.electron-builder.config.js').extraMetadata.version)}catch(e){console.error(e);process.exit(1)}")" >> $GITHUB_OUTPUT
-
       - name: Delete outdated drafts
         uses: hugo19941994/delete-draft-releases@v1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Create Release Draft
         uses: softprops/action-gh-release@v1        
         env:
@@ -59,26 +51,20 @@ jobs:
           tag_name: v${{ steps.version.outputs.build-version }}
           name: v${{ steps.version.outputs.build-version }}
           body: ${{ steps.release-note.outputs.release-note }}
-
   upload_artifacts:
     needs: [ draft ]
-
     strategy:
       matrix:
         os: [ windows-latest ]
     #    To compile the application for different platforms, use:
     #    os: [ macos-latest, ubuntu-latest, windows-latest ]
-
     runs-on: ${{ matrix.os }}
-
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: 'yarn'
-
       - run: yarn install --frozen-lockfile
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
