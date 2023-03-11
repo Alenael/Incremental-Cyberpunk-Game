@@ -13,7 +13,7 @@ export function PlayerTracker({parentOpen}: IProps): React.ReactElement {
   const [money, setMoney] = useState(Player.money.toString());
 
   useEffect(() => {
-    if (!parentOpen) return; // No rerendering if overview is hidden, for performance
+    if (!parentOpen) return;
     const interval = setInterval(() => {
       setMoney(Player.money.toString());
     }, CONSTANTS.TRIPLE_TIME);
