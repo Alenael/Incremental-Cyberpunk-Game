@@ -5,7 +5,7 @@ import {CONSTANTS} from '/@/Constants';
 import {Player} from '/@/player';
 
 export function TaskTracker(): React.ReactElement {
-  const [enabled, setEnabled] = useState(Player.currentTask === null);
+  const [enabled, setEnabled] = useState(Player.currentTask !== null);
   const [task, setTask] = useState(Player.currentTask?.type);
   const [cycles, setCycles] = useState(Player.currentTask?.cyclesElapsed);
 
