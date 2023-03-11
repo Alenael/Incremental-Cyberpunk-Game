@@ -5,11 +5,13 @@ import {Generic_fromJSON, Generic_toJSON, Reviver} from '/@/utils/JSONReviver';
 
 import * as PlayerTask from './PlayerTask';
 import type {Task} from '/@/features/tasks/Task';
+import BigNumber from 'bignumber.js';
 
 /** Holds reference to all data for our player includeing functions for the player to perform */
 export class PlayerObject {
   //Data
   unlocked = false;
+  money = new BigNumber(0);
   totalPlayTime = 0;
   lastUpdate = 0;
   lastSave = 0;
@@ -20,11 +22,15 @@ export class PlayerObject {
   processTask = PlayerTask.processTask;
   finishTask = PlayerTask.finishTask;
 
+  gainMoney(amount: number) {
+    this.money = this.money.plus(amount);
+  }
+
   /** Handles updating the state of the player object with each frame */
   update(numCycles: number) {
     const time = numCycles * CONSTANTS.CYCLE_TIME;
-    Player.totalPlayTime += time;
-    Player.processTask(numCycles);
+    this.totalPlayTime += time;
+    this.processTask(numCycles);
   }
 
   toJSON(): IReviverValue {
@@ -32,7 +38,8 @@ export class PlayerObject {
   }
 
   static fromJSON(value: IReviverValue): PlayerObject {
-    return Generic_fromJSON(PlayerObject, value.data);
+    const player = Generic_fromJSON(PlayerObject, value.data);
+    return player;
   }
 }
 
@@ -43,4 +50,5 @@ export let Player = new PlayerObject();
 /** Loads the Player Object from the JSON save */
 export function loadPlayer(playerObject: string) {
   Player = JSON.parse(playerObject, Reviver);
+  Player.money = BigNumber(Player.money);
 }

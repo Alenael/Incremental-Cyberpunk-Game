@@ -1,8 +1,7 @@
-import type {IReviverValue} from '../../utils/JSONReviver';
-import {Reviver} from '../../utils/JSONReviver';
-import {Generic_fromJSON} from '../../utils/JSONReviver';
-import {Generic_toJSON} from '../../utils/JSONReviver';
+import type {IReviverValue} from '/@/utils/JSONReviver';
+import {Reviver, Generic_fromJSON, Generic_toJSON} from '/@/utils/JSONReviver';
 import {Task, TaskType} from './Task';
+import {Player} from '/@/player';
 
 /** Simple Work task whih allows one to perform work for money */
 export class Work extends Task {
@@ -13,10 +12,11 @@ export class Work extends Task {
   process(cycles: number): boolean {
     this.cyclesElapsed += cycles;
     //Process money gains for player/affect the world
+    Player.gainMoney(cycles * 5);
     return false;
   }
 
-  finish() {
+  finish(canceled: boolean) {
     //Display Finished Modal
   }
 

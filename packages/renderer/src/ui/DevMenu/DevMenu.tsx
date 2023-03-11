@@ -2,11 +2,11 @@ import * as React from 'react';
 
 import {Box, Button, VStack} from '@chakra-ui/react';
 
-import {saveObject} from '../../features/save/SaveManager';
-import {deleteGame, load} from '../../features/save/db';
+import {saveObject} from '/@/features/save/SaveManager';
+import {deleteGame, load} from '/@/features/save/db';
 import {useRender} from '/@/hooks/useRender';
 import {Player} from '/@/player';
-import {Work} from '../../features/tasks/Work';
+import {Work} from '/@/features/tasks/Work';
 
 const DevMenu: React.FC = () => {
   useRender();

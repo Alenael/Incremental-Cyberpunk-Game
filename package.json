@@ -54,6 +54,7 @@
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "bignumber.js": "^9.1.1",
     "electron-updater": "5.2.1",
     "framer-motion": "^10.0.2",
     "react": "^18.2.0",

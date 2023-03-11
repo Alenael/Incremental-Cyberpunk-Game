@@ -1,13 +1,11 @@
-import type {IReviverValue} from '../../utils/JSONReviver';
-import {Reviver} from '../../utils/JSONReviver';
-import {Generic_fromJSON} from '../../utils/JSONReviver';
-import {Generic_toJSON} from '../../utils/JSONReviver';
+import type {IReviverValue} from '/@/utils/JSONReviver';
+import {Reviver, Generic_fromJSON, Generic_toJSON} from '/@/utils/JSONReviver';
 import {Task, TaskType} from './Task';
 
 /** Simple Train which can improve stats */
 export class Train extends Task {
   constructor() {
-    super(TaskType.CRIME);
+    super(TaskType.TRAIN);
   }
 
   process(cycles: number): boolean {
@@ -16,7 +14,7 @@ export class Train extends Task {
     return false;
   }
 
-  finish() {
+  finish(canceled: boolean) {
     //Display Finished Modal
   }
 

@@ -4,6 +4,7 @@ import type {IReviverValue} from '/@/utils/JSONReviver';
 export enum TaskType {
   WORK = 'WORK',
   CRIME = 'CRIME',
+  TRAIN = 'TRAIN',
 }
 
 /** Base of all Task's which perform actions over time until they finish */

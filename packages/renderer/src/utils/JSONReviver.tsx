@@ -1,5 +1,6 @@
 /* From: https://github.com/danielyxie/bitburner/blob/dev/src/utils/JSONReviver.ts */
 
+import {Work} from '../features/tasks/Work';
 import {validateObject} from './Validator';
 
 export interface IReviverValue {

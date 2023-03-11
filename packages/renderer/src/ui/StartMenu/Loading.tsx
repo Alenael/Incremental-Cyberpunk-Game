@@ -1,40 +1,30 @@
 import React, {useEffect, useState} from 'react';
 import {Box, Spinner} from '@chakra-ui/react';
 
-import {Engine} from '/@/Engine';
-import {load} from '/@/features/save/db';
 import GameRoot from '/@/ui/GameMenu/GameRoot';
+import {LoadState} from '/@/features/save/LoadManager';
 
 export function Loading(): React.ReactElement {
-  const [loaded, setLoaded] = useState(false);
-  const [maxWaitDone, setmaxWaitDone] = useState(false);
+  const [loaded, setLoaded] = useState(LoadState.Loaded);
+  const [error, setError] = useState(LoadState.Error);
   const [reason, setReason] = useState('');
 
   useEffect(() => {
     const id = setInterval(() => {
-      if (!loaded) setmaxWaitDone(true);
-    }, 4000);
+      if (LoadState.Error) {
+        setError(true);
+        setReason(LoadState.ErrorReason);
+        clearInterval(id);
+      }
+      if (LoadState.Loaded) {
+        setLoaded(true);
+        clearInterval(id);
+      }
+    }, 200);
     return () => clearInterval(id);
   }, []);
 
-  useEffect(() => {
-    const loadData = async () => {
-      await load()
-        .then(saveString => {
-          Engine.load(saveString);
-          setLoaded(true);
-        })
-        .catch(reason => {
-          Engine.load();
-          setReason(reason);
-          setLoaded(true);
-        });
-    };
-
-    loadData();
-  }, []);
-
-  return !loaded && maxWaitDone ? (
+  return error ? (
     <Box>
       Error Loading!
       {reason}

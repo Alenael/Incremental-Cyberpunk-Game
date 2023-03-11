@@ -1,11 +1,15 @@
 import React, {lazy} from 'react';
 
 import {Player} from '/@/player';
+import DevMenu from '/@/ui/DevMenu/DevMenu';
+import ErrorMenu from '/@/ui/GameMenu/Error';
+import Home from '/@/ui/GameMenu/Home';
+import UnlockedMenu from '/@/ui/Unlocked';
 
-const Home = lazy(() => import('/@/ui/GameMenu/Home'));
-const UnlockedMenu = lazy(() => import('/@/ui/Unlocked'));
-const DevMenu = lazy(() => import('/@/ui/DevMenu/DevMenu'));
-const ErrorMenu = lazy(() => import('/@/ui/GameMenu/Error'));
+// const Home = lazy(() => import('/@/ui/GameMenu/Home'));
+// const UnlockedMenu = lazy(() => import('/@/ui/Unlocked'));
+// const DevMenu = lazy(() => import('/@/ui/DevMenu/DevMenu'));
+// const ErrorMenu = lazy(() => import('/@/ui/GameMenu/Error'));
 
 export default interface Menu {
   id: string;

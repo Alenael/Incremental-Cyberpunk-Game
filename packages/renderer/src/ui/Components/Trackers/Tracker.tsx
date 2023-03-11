@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 import {Text, Box, Collapse, IconButton, HStack} from '@chakra-ui/react';
 import {ChevronDownIcon} from '@chakra-ui/icons';
+import {TaskTracker} from './TaskTracker';
 
 interface TrackerProps {
   children: (
@@ -34,6 +35,7 @@ export function Tracker({children}: TrackerProps): React.ReactElement {
         ></IconButton>
       </HStack>
       <Collapse in={open}>{children(open)}</Collapse>
+      <TaskTracker />
     </Box>
   );
 }

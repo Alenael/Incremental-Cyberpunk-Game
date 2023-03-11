@@ -5,8 +5,8 @@ import Sidebar from '/@/features/sidebar/Sidebar';
 import {ToastContainer} from '/@/ui/theme/components/Toast';
 import {MenusProvider} from '/@/features/router/Context';
 import {RouterMetadata} from '/@/features/router/RouterMetadata';
-import {Tracker} from './Components/Tracker';
-import {PlayerTracker} from './Components/PlayerTracker';
+import {PlayerTracker} from '/@/ui/Components/Trackers/PlayerTracker';
+import {Tracker} from '/@/ui/Components/Trackers/Tracker';
 
 /** Game Root will hold all objects required to display the Game UI */
 const GameRoot: React.FC = () => {
