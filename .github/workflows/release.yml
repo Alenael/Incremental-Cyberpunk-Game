@@ -45,7 +45,7 @@ jobs:
         id: version
         run: echo "build-version=$(node -e "try{console.log(require('./.electron-builder.config.js').extraMetadata.version)}catch(e){console.error(e);process.exit(1)}")" >> $GITHUB_OUTPUT
 
-      - name: Delete outdated drafts
+      - name: Delete outdated draftsz
         uses: hugo19941994/delete-draft-releases@v1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -27,29 +27,37 @@ jobs:
       - run: yarn install --frozen-lockfile
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-      - run: yarn run test:${{ matrix.package }}
-
-  e2e:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ windows-latest ]
-        # os: [ windows-latest, ubuntu-latest, macos-latest ]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-        env:
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-
+      - run: yarn run test:main
+      - run: yarn run test:preload
+      - run: yarn run test:renderer
         # I ran into problems trying to run an electron window in ubuntu due to a missing graphics server.
         # That's why this special command for Ubuntu is here
       - run: xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- yarn run test:e2e
         if: matrix.os == 'ubuntu-latest'
-
       - run: yarn run test:e2e
         if: matrix.os != 'ubuntu-latest'
+
+  # e2e:
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       os: [ windows-latest ]
+  #       # os: [ windows-latest, ubuntu-latest, macos-latest ]
+  #   runs-on: ${{ matrix.os }}
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 18
+  #         cache: 'yarn'
+  #     - run: yarn install --frozen-lockfile
+  #       env:
+  #         PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+
+  #       # I ran into problems trying to run an electron window in ubuntu due to a missing graphics server.
+  #       # That's why this special command for Ubuntu is here
+  #     - run: xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- yarn run test:e2e
+  #       if: matrix.os == 'ubuntu-latest'
+
+  #     - run: yarn run test:e2e
+  #       if: matrix.os != 'ubuntu-latest'
