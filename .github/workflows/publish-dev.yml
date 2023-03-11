@@ -9,7 +9,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "pages-dev"
   cancel-in-progress: true
  
 jobs:
@@ -28,7 +28,6 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install
-
       - name: Build
         run: yarn run build:renderer
       - name: Setup Pages
