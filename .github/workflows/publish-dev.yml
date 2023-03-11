@@ -1,9 +1,7 @@
 name: Github Pages Deploy - Dev
 on: 
-  push:
-    branches:
-      - "dev"
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: write
@@ -15,7 +13,7 @@ concurrency:
   cancel-in-progress: true
  
 jobs:
-  deploy:
+  deploy:    
     environment:
       name: github-pages-dev
       url: ${{ steps.deployment.outputs.page_url }}
@@ -30,6 +28,7 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install
+
       - name: Build
         run: yarn run build:renderer
       - name: Setup Pages

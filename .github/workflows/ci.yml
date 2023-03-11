@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - master
+      - dev
     paths-ignore:
       - '**.md'
       - .editorconfig
@@ -11,7 +11,7 @@ on:
   pull_request:
     branches:
       - main
-      - master
+      - dev
     paths-ignore:
       - '**.md'
       - .editorconfig
@@ -24,6 +24,10 @@ concurrency:
 jobs:
   tests:
     uses: ./.github/workflows/tests.yml
+  publish_dev:
+    if: github.event_name == 'push' && github.ref_name == 'dev'
+    needs: [ tests ]
+    uses: ./.github/workflows/publish-dev.yml
   draft_release:
     if: github.event_name == 'push' && github.ref_name == 'main'
     needs: [ tests ]

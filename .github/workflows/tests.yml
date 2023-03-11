@@ -3,8 +3,14 @@ on:
   workflow_call:
   push:
     branches-ignore:
-      - "v*.*.*-*"
-      - "main"
+      - v*.*.*-*
+      - main
+      - dev
+  pull_request:
+    branches-ignore:
+      - v*.*.*-*
+      - main
+      - dev
 
 concurrency:
   group: tests-${{ github.ref }}

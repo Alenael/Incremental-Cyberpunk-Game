@@ -2,8 +2,9 @@ name: Format
 on:
   push:
     branches-ignore:
-      - "v*.*.*-*"
-      - "main"
+      - v*.*.*-*
+      - main
+      - dev
 
 concurrency:
   group: format-${{ github.ref }}
