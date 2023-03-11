@@ -1,15 +1,14 @@
-name: Release
-on: [ workflow_call, workflow_dispatch ]
+name: Create Release
+on: 
+  workflow_call:
 
 concurrency:
   group: release-${{ github.ref }}
   cancel-in-progress: true
 
-
 defaults:
   run:
     shell: 'bash'
-
 
 jobs:
 

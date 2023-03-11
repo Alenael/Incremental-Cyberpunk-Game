@@ -27,4 +27,4 @@ jobs:
   draft_release:
     if: github.event_name == 'push' && github.ref_name == 'main'
     needs: [ tests ]
-    uses: ./.github/workflows/release.yml
+    uses: ./.github/workflows/create_release.yml
