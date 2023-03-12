@@ -12,7 +12,7 @@ export class Work extends Task {
   process(cycles: number): boolean {
     this.cyclesElapsed += cycles;
     //Process money gains for player/affect the world
-    Player.gainMoney(cycles * 5);
+    Player.gainMoney(5000000.27); //Math.pow(cycles, 9.27));
     return false;
   }
 

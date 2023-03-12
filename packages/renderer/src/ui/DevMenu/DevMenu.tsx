@@ -41,6 +41,7 @@ const DevMenu: React.FC = () => {
         <Button
           onClick={() => {
             showMessage(<>MODAL!</>);
+            showMessage(<>MODAL!</>);
             showMessage(<>MODAL 2!</>);
             showMessage(<>MODAL 3!</>);
             showMessage(<>MODAL 4!</>);

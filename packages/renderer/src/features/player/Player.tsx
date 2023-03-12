@@ -5,13 +5,13 @@ import {Generic_fromJSON, Generic_toJSON, Reviver} from '/@/utils/JSONReviver';
 
 import * as PlayerTask from './PlayerTask';
 import type {Task} from '/@/features/tasks/Task';
-import BigNumber from 'bignumber.js';
+import {MoneyBN} from '/@/utils/BigNumberConfig';
 
 /** Holds reference to all data for our player includeing functions for the player to perform */
 export class PlayerObject {
   //Data
   unlocked = false;
-  money = new BigNumber(0);
+  money = new MoneyBN(0);
   totalPlayTime = 0;
   lastUpdate = 0;
   lastSave = 0;
@@ -50,5 +50,5 @@ export let Player = new PlayerObject();
 /** Loads the Player Object from the JSON save */
 export function loadPlayer(playerObject: string) {
   Player = JSON.parse(playerObject, Reviver);
-  Player.money = BigNumber(Player.money);
+  Player.money = new MoneyBN(Player.money);
 }
