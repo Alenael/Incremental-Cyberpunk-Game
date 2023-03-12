@@ -7,6 +7,7 @@ import {MenusProvider} from '/@/features/router/Context';
 import {RouterMetadata} from '/@/features/router/RouterMetadata';
 import {PlayerTracker} from '/@/ui/Components/Trackers/PlayerTracker';
 import {Tracker} from '/@/ui/Components/Trackers/Tracker';
+import {AlertManager} from '/@/ui/Components/AlertManager';
 
 /** Game Root will hold all objects required to display the Game UI */
 const GameRoot: React.FC = () => {
@@ -16,6 +17,7 @@ const GameRoot: React.FC = () => {
       <Sidebar router={router} />
       <RouterProvider router={router} />
       <Tracker>{parentOpen => <PlayerTracker parentOpen={parentOpen} />}</Tracker>
+      <AlertManager />
       <ToastContainer />
     </MenusProvider>
   );
