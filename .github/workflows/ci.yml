@@ -7,13 +7,6 @@ on:
       - '**.md'
       - .editorconfig
       - .gitignore
-  pull_request:
-    branches:
-      - main
-    paths-ignore:
-      - '**.md'
-      - .editorconfig
-      - .gitignore
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -23,6 +16,5 @@ jobs:
   tests:
     uses: ./.github/workflows/tests.yml
   draft_release:
-    if: github.event_name == 'push' && github.ref_name == 'main'
     needs: [ tests ]
     uses: ./.github/workflows/create_release.yml

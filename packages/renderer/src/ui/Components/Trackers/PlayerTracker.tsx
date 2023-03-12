@@ -4,31 +4,34 @@ import {Button, Table, Tbody, Th, Tr} from '@chakra-ui/react';
 import {saveObject} from '/@/features/save/SaveManager';
 import {Player} from '/@/player';
 import {CONSTANTS} from '/@/Constants';
+import {toMoney} from '/@/utils/BigNumberConfig';
 
 interface IProps {
   parentOpen: boolean;
 }
 
+const playerMoney = () => toMoney(Player.money);
+
 export function PlayerTracker({parentOpen}: IProps): React.ReactElement {
-  const [money, setMoney] = useState(Player.money.toString());
+  const [money, setMoney] = useState(playerMoney);
 
   useEffect(() => {
     if (!parentOpen) return;
     const interval = setInterval(() => {
-      setMoney(Player.money.toString());
+      setMoney(playerMoney);
     }, CONSTANTS.TRIPLE_TIME);
     return () => clearInterval(interval);
   }, [parentOpen]);
-
+  console.log(money);
   return (
     <>
       <Table sx={{display: 'block', m: 1}}>
         <Tbody>
           <Tr>
-            <Th>Money: {money}</Th>
+            <Th textTransform={'none'}>Money: {money}</Th>
           </Tr>
           <Tr>
-            <Th>Test Info</Th>
+            <Th textTransform={'none'}>Test Info</Th>
           </Tr>
         </Tbody>
       </Table>
