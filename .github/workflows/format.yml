@@ -1,9 +1,8 @@
 name: Format
 on:
-  push:
+  pull_request:
     branches-ignore:
       - v*.*.*-*
-      - main      
 
 concurrency:
   group: format-${{ github.ref }}
@@ -11,14 +10,14 @@ concurrency:
 
 jobs:
   format:
-    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    runs-on: ubuntu-latest    
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: 'yarn'
-
       - run: yarn run format
       - run: |
           git config user.name github-actions
