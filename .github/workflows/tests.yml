@@ -5,10 +5,7 @@ on:
     branches-ignore:
       - v*.*.*-*
       - main
-  pull_request:
-    branches-ignore:
-      - v*.*.*-*
-      - main
+      - dev
 
 concurrency:
   group: tests-${{ github.ref }}
