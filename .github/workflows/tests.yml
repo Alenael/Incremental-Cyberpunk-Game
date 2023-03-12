@@ -6,6 +6,10 @@ on:
       - v*.*.*-*
       - main
       - dev
+  pull_request:
+    branches:
+      - main
+      - dev
 
 concurrency:
   group: tests-${{ github.ref }}
