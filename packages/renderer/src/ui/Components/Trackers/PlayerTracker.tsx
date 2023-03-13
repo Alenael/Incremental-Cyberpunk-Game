@@ -4,7 +4,7 @@ import {Button, Table, Tbody, Th, Tr} from '@chakra-ui/react';
 import {saveObject} from '/@/features/save/SaveManager';
 import {Player} from '/@/player';
 import {CONSTANTS} from '/@/Constants';
-import {toMoney} from '/@/utils/BigNumberConfig';
+import {toMoney} from '../../../utils/BigNumber/BigNumberConfig';
 
 interface IProps {
   parentOpen: boolean;

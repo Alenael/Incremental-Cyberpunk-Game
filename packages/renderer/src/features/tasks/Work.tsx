@@ -1,6 +1,7 @@
 import type {IReviverValue} from '/@/utils/JSONReviver';
 import {Reviver, Generic_fromJSON, Generic_toJSON} from '/@/utils/JSONReviver';
-import {MoneyBN} from '/@/utils/BigNumberConfig';
+import {BFN} from '/@/utils/BigNumber/BigNumberOverride';
+
 import {Task, TaskType} from './Task';
 import {Player} from '/@/player';
 
@@ -12,7 +13,7 @@ export class Work extends Task {
 
   process(cycles: number): boolean {
     this.cyclesElapsed += cycles;
-    const amt = new MoneyBN(cycles * 5000000.27);
+    const amt = new BFN(cycles * 5000);
     Player.gainMoney({name: this.type, amount: amt});
     return false;
   }

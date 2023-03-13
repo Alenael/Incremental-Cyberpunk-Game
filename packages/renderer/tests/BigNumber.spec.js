@@ -1,6 +1,8 @@
 import {test} from 'vitest';
 import {strict as assert} from 'assert';
-import {MoneyBN, toMoney} from '../src/utils/BigNumberConfig';
+
+import {BFN} from '/@/utils/BigNumber/BigNumberOverride';
+import {toMoney} from '/@/utils/BigNumber/BigNumberConfig';
 
 /* Metdata used for money tests 
 key: Scenmario Name
@@ -43,7 +45,7 @@ let stringTestValues = {
 test('toMoney Tests', async () => {
   for (const [key, value] of Object.entries(stringTestValues)) {
     const expected = value[0];
-    var number = new MoneyBN(value[1]);
+    var number = new BFN(value[1]);
     const actual = toMoney(number);
     assert.equal(actual, expected, `Failed to create correct value for ${key}`);
   }

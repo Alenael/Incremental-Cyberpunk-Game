@@ -2,10 +2,10 @@ import {CONSTANTS} from '/@/Constants';
 
 import type {IReviverValue} from '/@/utils/JSONReviver';
 import {Generic_fromJSON, Generic_toJSON, Reviver} from '/@/utils/JSONReviver';
+import {BFN} from '/@/utils/BigNumber/BigNumberOverride';
 
 import * as PlayerTask from './PlayerTask';
 import type {Task} from '/@/features/tasks/Task';
-import {MoneyBN} from '/@/utils/BigNumberConfig';
 import type {MoneySource} from '/@/features/trackers/MoneySourceTracker';
 import {MoneySourceTracker} from '/@/features/trackers/MoneySourceTracker';
 
@@ -13,7 +13,7 @@ import {MoneySourceTracker} from '/@/features/trackers/MoneySourceTracker';
 export class PlayerObject {
   //Data
   unlocked = false;
-  money = new MoneyBN(0);
+  money = new BFN(0);
   totalPlayTime = 0;
   lastUpdate = 0;
   lastSave = 0;

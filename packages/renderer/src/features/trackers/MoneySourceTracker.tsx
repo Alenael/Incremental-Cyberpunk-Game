@@ -1,7 +1,8 @@
 import type BigNumber from 'bignumber.js';
-import {MoneyBN} from '/@/utils/BigNumberConfig';
+
 import type {IReviverValue} from '/@/utils/JSONReviver';
 import {Generic_fromJSON, Generic_toJSON, Reviver} from '/@/utils/JSONReviver';
+import {BFN} from '/@/utils/BigNumber/BigNumberOverride';
 
 export interface MoneySource {
   name: string;
@@ -9,9 +10,8 @@ export interface MoneySource {
 }
 
 export class MoneySourceTracker {
-  // eslint-disable-next-line @typescript-eslint/ban-types
   sources: MoneySource[] = [];
-  total = new MoneyBN(0);
+  total = new BFN(0);
 
   record(source: MoneySource) {
     const s = this.sources.filter(s => s.name === source.name)[0];
