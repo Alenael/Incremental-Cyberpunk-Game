@@ -22,7 +22,6 @@ export function PlayerTracker({parentOpen}: IProps): React.ReactElement {
     }, CONSTANTS.TRIPLE_TIME);
     return () => clearInterval(interval);
   }, [parentOpen]);
-  console.log(money);
   return (
     <>
       <Table sx={{display: 'block', m: 1}}>
