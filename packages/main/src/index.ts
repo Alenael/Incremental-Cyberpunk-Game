@@ -46,14 +46,17 @@ app
 if (import.meta.env.DEV) {
   app
     .whenReady()
-    .then(() => import('electron-devtools-installer'))
-    .then(({default: installExtension, REACT_DEVELOPER_TOOLS}) =>
+    .then(() => {
+      const {
+        default: installExtension,
+        REACT_DEVELOPER_TOOLS,
+      } = require('electron-devtools-installer');
       installExtension(REACT_DEVELOPER_TOOLS, {
         loadExtensionOptions: {
           allowFileAccess: true,
         },
-      }),
-    )
+      });
+    })
     .catch(e => console.error('Failed install extension:', e));
 }
 
